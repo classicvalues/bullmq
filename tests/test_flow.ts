@@ -561,6 +561,7 @@ describe('flows', () => {
       await flow.close();
       await worker.close();
       await childrenWorker.close();
+      await grandchildrenWorker.close()
     });
   });
 
@@ -1777,7 +1778,7 @@ describe('flows', () => {
     const { children, job } = tree;
     const parentState = await job.getState();
 
-    //expect(parentState).to.be.eql('waiting-children');
+    expect(parentState).to.be.eql('waiting-children');
     expect(children).to.have.length(values.length);
 
     await processingChildren;
@@ -2959,6 +2960,8 @@ describe('flows', () => {
         await flow.close();
         await parentQueue.close();
         await removeAllQueueData(new IORedis(), parentQueueName);
+        await parentWorker.close()
+        await childrenWorker.close()
       });
     });
 

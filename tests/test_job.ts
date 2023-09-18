@@ -1047,6 +1047,7 @@ describe('Job', function () {
       worker.run();
 
       await completing;
+      await worker.close();
     });
 
     it('should not promote a job that is not delayed', async () => {

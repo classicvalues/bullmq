@@ -149,6 +149,7 @@ describe('events', function () {
 
       const actualCount = await queue.count();
       expect(actualCount).to.be.equal(0);
+      await worker.close()
     });
   });
 

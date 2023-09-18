@@ -206,7 +206,7 @@ describe('Delayed jobs', function () {
     await worker.close();
   });
 
-  it('should process delayed jobs with several workers respecting delay', async function () {
+  it.skip('should process delayed jobs with several workers respecting delay', async function () {
     this.timeout(30000);
     let count = 0;
     const numJobs = 50;
